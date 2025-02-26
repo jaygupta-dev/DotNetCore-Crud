@@ -1,0 +1,101 @@
+﻿@model FormModel
+@{
+    ViewData["Title"] = "EditPage";
+}
+
+<style>
+    label {
+        font-weight: bold;
+    }
+</style>
+
+<div class="container">
+    <div class="row justify-content-center mb-4">
+        <div class="col-md-8 col-sm-11 text-center text-decoration-underline"><b>DOT NET CORE CRUD PRACTICE ALL FORM FIELD</b></div>
+        <div class="col-md-8 col-sm-11 text-center">@ViewBag.message</div>
+    </div>
+    <p class="text-end"><a class="btn btn-warning" href="/Home/About">See List</a></p>
+    <form action="/Home/UpdateForm" method="post" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row mb-2">
+                    <div class="col-sm-6 col-md-4 col-lg-3 mb-1">
+                        <label>Name</label>
+                        <input type="text" name="name" class="form-control" value="@Model.Name"/>
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3 mb-1">
+                        <label>Email</label>
+                        <input type="email" name="email" class="form-control" value="@Model.Email" />
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3 mb-1">
+                        <label>Mobile Number</label>
+                        <input type="number" name="mobilenumber" class="form-control" value="@Model.MobileNumber" />
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3 mb-1">
+                        <label>Profile Image</label>
+                        <input type="file" name="profilepath" class="form-control" />
+                        <img src="~/images/@Model.ProfilePathStr" height="50"/>
+                        <input type="hidden" value="@Model.ProfilePathStr" name="ProfilePathStr" />
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-sm-6 col-md-4 col-lg-3 mb-1">
+                        <label>Gender</label>
+                        <br />
+                        Male : 
+                        @if (Model.Gender == "male")
+                        {
+                            <input type="radio" name="gender" value="male" checked/>
+                        }
+                        else
+                        {
+                            <input type="radio" name="gender" value="male" />
+                        }
+
+                        Female : 
+                        @if (Model.Gender == "female")
+                        {
+                            <input type="radio" name="gender" value="female" checked />
+                        }
+                        else
+                        {
+                            <input type="radio" name="gender" value="female" />
+                        }
+                        
+                        
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3 mb-1">
+                        <label>Highest Qualification</label>
+                        <select name="qualification" class="form-control">
+                            <option value="">--select--</option>
+                            @if (Model.Qualification == "btech")
+                            {
+                                <option value="btech" selected>B.Tech</option>
+                            }
+                            else{
+                                <option value="btech">B.Tech</option>
+                            }
+                            @if (Model.Qualification == "mtech")
+                            {
+                                <option value="mtech" selected>M.Tech</option>
+                            }
+                            else{
+                                <option value="mtech">M.Tech</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3 mb-1">
+                        <label>Message</label>
+                        <textarea type="file" name="message" class="form-control">@Model.Message</textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 col-md-4 col-lg-3 mb-1">
+                        <input type="hidden" value="@Model.Id" name="Id"/>
+                        <input type="submit" value="Update" class="btn btn-success" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

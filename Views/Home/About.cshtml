@@ -1,0 +1,45 @@
+﻿@model List<FormModel>
+@{
+    ViewData["Title"] = "About";
+}
+
+<h1 class="text-center">See Data List</h1>
+<br />
+<p class="text-center"><b>@ViewBag.message</b></p>
+<p class="text-end"><a href="/Home/Index" class="btn btn-warning">Add New</a></p>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile no</th>
+            <th>Gender</th>
+            <th>Qualification</th>
+            <th>Profile</th>
+            <th>Message</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if(Model != null && Model.Count > 0){
+            foreach(var item in Model){
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>@item.Email</td>
+                    <td>@item.MobileNumber</td>
+                    <td>@item.Gender</td>
+                    <td>@item.Qualification</td>
+                    <td><img src="~/images/@item.ProfilePathStr" height="50" /></td>
+                    <td>@item.Message</td>
+                    <td>
+                        <a href="/Home/EditPage?Id=@item.Id" class="btn btn-success">Edit</a>
+                        <a href="/Home/About?Id=@item.Id" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
